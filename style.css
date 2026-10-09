@@ -1,0 +1,628 @@
+/* ==========================================================
+   GUIA DA MOANA - arquivo de estilo (style.css)
+   Todas as 6 páginas usam este mesmo arquivo.
+
+   Como ele está organizado:
+   1. Base (cores, fontes, fundo)
+   2. Menu e rodapé
+   3. Peças da colagem (papel, faixa, polaroid, adesivo)
+   4. Capa da página inicial
+   5. Páginas internas (colunas, filmes, personagens...)
+   6. Ilustrações (imagens desenhadas em código, não precisa explicar)
+   7. RESPONSIVIDADE (regras para tablet e celular)
+   ========================================================== */
+
+
+/* ---------- 1. BASE ---------- */
+
+/* Faz a largura e a altura incluírem o padding e a borda */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #1c3a44;
+  background-color: #5fc3c8;
+  /* Fundo de água: do azul claro ao azul mais escuro */
+  background-image: linear-gradient(#9be3e0, #2a97a5);
+}
+
+h1, h2, h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+a {
+  color: #0a6770;
+}
+
+/* Caixa central que segura o conteúdo de cada página.
+   max-width: não passa de 1000px, mas pode ficar menor em telas pequenas. */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+
+/* ---------- 2. MENU E RODAPÉ ---------- */
+
+.menu {
+  background-color: #ffffff;
+  border-bottom: 3px solid #2a97a5;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menu .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.logo {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 6px;
+  color: #17323b;
+  text-decoration: none;
+}
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  display: block;
+  padding: 6px 12px;
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 14px;
+  color: #17323b;
+  text-decoration: none;
+}
+
+.menu li a:hover,
+.menu li a.atual {
+  background-color: #c0f0ec;
+}
+
+.rodape {
+  background-color: #052e38;
+  color: #cfe7e4;
+  font-size: 14px;
+  padding-bottom: 24px;
+}
+
+.rodape .container {
+  padding-top: 20px;
+}
+
+
+/* ---------- 3. PEÇAS DA COLAGEM ---------- */
+
+/* Papel claro com sombra, como uma folha colada */
+.papel {
+  background-color: #fffaf0;
+  padding: 24px;
+  box-shadow: 0 10px 24px rgba(0, 40, 50, 0.35);
+}
+
+/* Faixa branca com o título, como as etiquetas da colagem */
+.faixa {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #17323b;
+  font-size: 40px;
+  letter-spacing: 2px;
+  padding: 6px 20px;
+  box-shadow: 0 8px 18px rgba(0, 40, 50, 0.3);
+}
+
+/* Etiqueta azul pequena */
+.etiqueta {
+  display: inline-block;
+  background-color: #225e94;
+  color: #ffffff;
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 14px;
+  padding: 3px 12px;
+  margin-bottom: 10px;
+}
+
+/* Etiqueta azul grande, com frase em itálico */
+.frase {
+  background-color: #225e94;
+  color: #ffffff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 22px;
+  padding: 10px 16px;
+  margin: 0;
+}
+
+/* Moldura de foto instantânea (polaroid) */
+.polaroid {
+  background-color: #ffffff;
+  width: 230px;
+  padding: 10px 10px 0;
+  box-shadow: 0 10px 22px rgba(0, 40, 50, 0.4);
+}
+
+.polaroid p {
+  font-family: "Special Elite", "Courier New", monospace;
+  color: #2a3a40;
+  text-align: center;
+  padding: 14px 0 16px;
+  margin: 0;
+}
+
+/* Quadrado onde aparece uma ilustração */
+.cena {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Adesivo: imagem pequena com borda branca */
+.adesivo {
+  width: 84px;
+  height: 84px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Quatro sombras brancas formam a borda do adesivo; a última dá a sombra */
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 6px 8px rgba(0, 40, 50, 0.4));
+}
+
+/* Botão */
+.botao {
+  display: inline-block;
+  padding: 10px 20px;
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 16px;
+  color: #1c3a44;
+  background-color: transparent;
+  border: 2px solid #1c3a44;
+  text-decoration: none;
+}
+
+.botao-cheio {
+  background-color: #c93c5a;
+  border-color: #c93c5a;
+  color: #ffffff;
+}
+
+/* Inclinações leves: cada peça fica um pouco torta, como numa colagem */
+.inclina-esq { transform: rotate(-2deg); }
+.inclina-dir { transform: rotate(2deg); }
+
+
+/* ---------- 4. CAPA DA PÁGINA INICIAL ---------- */
+
+.capa {
+  text-align: center;
+  padding: 40px 0 30px;
+}
+
+/* Linha de adesivos: flex deixa todos lado a lado e quebra de linha se faltar espaço */
+.fileira-adesivos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 10px 0 20px;
+}
+
+.fileira-adesivos .adesivo:nth-child(odd) { transform: rotate(-12deg); }
+.fileira-adesivos .adesivo:nth-child(even) { transform: rotate(9deg); }
+
+.titulo-capa {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #17323b;
+  padding: 6px 36px 10px;
+  box-shadow: 0 12px 26px rgba(0, 40, 50, 0.4);
+}
+
+.titulo-capa h1 {
+  font-size: 80px;
+  letter-spacing: 24px;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.titulo-capa p {
+  font-family: "Special Elite", "Courier New", monospace;
+  letter-spacing: 3px;
+  color: #48676f;
+  margin: 0;
+}
+
+.mural {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 34px 0 10px;
+}
+
+.mural .frases {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 260px;
+  text-align: left;
+}
+
+.mural .polaroid:nth-child(1) { transform: rotate(-6deg); }
+.mural .polaroid:nth-child(3) { transform: rotate(5deg); }
+
+.apresentacao {
+  max-width: 600px;
+  margin: 10px auto 0;
+  padding: 24px;
+  font-size: 19px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+
+/* ---------- 5. PÁGINAS INTERNAS ---------- */
+
+.secao {
+  padding: 40px 0;
+}
+
+/* Título da página com um adesivo ao lado */
+.titulo-linha {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.titulo-linha .faixa {
+  margin: 0;
+}
+
+/* Layouts em colunas com grid */
+.duas-colunas {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.tres-colunas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+}
+
+.duas-iguais {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* Ficha da Moana */
+.ficha {
+  background-color: #fff0cf;
+  border: 2px dashed #d6c9ae;
+}
+
+.ficha dt {
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 14px;
+  color: #0a6770;
+}
+
+.ficha dd {
+  margin: 0 0 12px;
+}
+
+/* Lista de características */
+.caracteristicas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.caracteristicas li {
+  background-color: #225e94;
+  color: #ffffff;
+  font-family: "Special Elite", "Courier New", monospace;
+  padding: 4px 16px;
+}
+
+/* Cartões de filme */
+.filme {
+  background-color: #fffaf0;
+  padding: 12px 12px 20px;
+  box-shadow: 0 12px 26px rgba(0, 40, 50, 0.35);
+}
+
+.filme .cena {
+  margin-bottom: 14px;
+}
+
+.filme .ano {
+  font-family: "Special Elite", "Courier New", monospace;
+  color: #c93c5a;
+}
+
+.filme .meta {
+  font-size: 15px;
+  font-weight: 700;
+  color: #48676f;
+}
+
+/* Cartões de personagem */
+.personagem {
+  display: flex;
+  gap: 14px;
+  background-color: #fffaf0;
+  padding: 16px;
+  box-shadow: 0 10px 20px rgba(0, 40, 50, 0.3);
+}
+
+.personagem h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.personagem p {
+  font-size: 15px;
+  color: #48676f;
+  margin: 0;
+}
+
+.personagem .funcao {
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 13px;
+  color: #0a6770;
+}
+
+/* Bolinha com a inicial do personagem */
+.inicial {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  color: #ffffff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 42px;
+}
+
+.cor1 { background-color: #0d6470; }
+.cor2 { background-color: #c4402b; }
+.cor3 { background-color: #6a4c93; }
+.cor4 { background-color: #b9770e; }
+.cor5 { background-color: #c2557a; }
+.cor6 { background-color: #2e7d4f; }
+.cor7 { background-color: #1f5fa3; }
+.cor8 { background-color: #7a3b1d; }
+.cor9 { background-color: #555f66; }
+
+/* Lista de músicas, no estilo de recibo */
+.recibo {
+  max-width: 640px;
+  font-family: "Special Elite", "Courier New", monospace;
+}
+
+.recibo h2 {
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed #d6c9ae;
+}
+
+.recibo ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recibo li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px dotted #d6c9ae;
+}
+
+.recibo small {
+  display: block;
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 14px;
+  color: #48676f;
+}
+
+.recibo .filme-da-musica {
+  font-size: 13px;
+  color: #0a6770;
+  white-space: nowrap;
+}
+
+/* Bilhetes coloridos da página de curiosidades */
+.bilhete {
+  padding: 22px;
+  color: #1f3036;
+  box-shadow: 0 12px 22px rgba(0, 40, 50, 0.3);
+}
+
+.bilhete h2 {
+  font-size: 24px;
+}
+
+.bilhete.amarelo { background-color: #fff3a8; }
+.bilhete.rosa { background-color: #ffd3df; }
+.bilhete.azul { background-color: #c9ecff; }
+.bilhete.verde { background-color: #d5f4c8; }
+
+/* Cartões da página inicial que levam para as outras páginas */
+.atalho {
+  display: block;
+  padding: 20px;
+  color: #1c3a44;
+  text-decoration: none;
+}
+
+.atalho .adesivo {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 8px;
+}
+
+.atalho h3 {
+  font-size: 26px;
+}
+
+.atalho p {
+  font-size: 15px;
+  color: #48676f;
+}
+
+.atalho .abrir {
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 14px;
+  color: #0a6770;
+}
+
+/* Botões de página anterior e próxima */
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 0 40px;
+}
+
+.navegacao .botao {
+  background-color: #fffaf0;
+}
+
+.navegacao .botao-cheio {
+  background-color: #c93c5a;
+}
+
+
+/* ---------- 6. ILUSTRAÇÕES ----------
+   Desenhos feitos em código (SVG) e colocados como imagem de fundo.
+   Não precisa explicar esta parte: é só a decoração. */
+
+.s-hibiscus-pink   { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='%23ff5f93'><ellipse cx='50' cy='27' rx='19' ry='24'/><ellipse cx='50' cy='27' rx='19' ry='24' transform='rotate(72 50 50)'/><ellipse cx='50' cy='27' rx='19' ry='24' transform='rotate(144 50 50)'/><ellipse cx='50' cy='27' rx='19' ry='24' transform='rotate(216 50 50)'/><ellipse cx='50' cy='27' rx='19' ry='24' transform='rotate(288 50 50)'/></g><circle cx='50' cy='50' r='12' fill='%23a50f3a' opacity='.6'/><path d='M50 50 L66 24' stroke='%23ffe27a' stroke-width='3' stroke-linecap='round'/><circle cx='66' cy='24' r='4' fill='%23ffc72c'/><circle cx='60' cy='30' r='2.4' fill='%23ffc72c'/><circle cx='71' cy='30' r='2.4' fill='%23ffc72c'/></svg>"); }
+.s-hibiscus-orange { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='%23ff9a4d'><ellipse cx='50' cy='27' rx='19' ry='24'/><ellipse cx='50' cy='27' rx='19' ry='24' transform='rotate(72 50 50)'/><ellipse cx='50' cy='27' rx='19' ry='24' transform='rotate(144 50 50)'/><ellipse cx='50' cy='27' rx='19' ry='24' transform='rotate(216 50 50)'/><ellipse cx='50' cy='27' rx='19' ry='24' transform='rotate(288 50 50)'/></g><circle cx='50' cy='50' r='12' fill='%23b8321a' opacity='.6'/><path d='M50 50 L66 24' stroke='%23ffe27a' stroke-width='3' stroke-linecap='round'/><circle cx='66' cy='24' r='4' fill='%23ffc72c'/><circle cx='60' cy='30' r='2.4' fill='%23ffc72c'/><circle cx='71' cy='30' r='2.4' fill='%23ffc72c'/></svg>"); }
+.s-plumeria-rose   { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='%23ffe3ee' stroke='%23e9a9bd' stroke-width='1.2'><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z'/><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z' transform='rotate(72 50 50)'/><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z' transform='rotate(144 50 50)'/><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z' transform='rotate(216 50 50)'/><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z' transform='rotate(288 50 50)'/></g><circle cx='50' cy='50' r='10' fill='%23ffb938'/></svg>"); }
+.s-plumeria-white  { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='white' stroke='%23d9c9d1' stroke-width='1.2'><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z'/><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z' transform='rotate(72 50 50)'/><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z' transform='rotate(144 50 50)'/><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z' transform='rotate(216 50 50)'/><path d='M50 50 C28 42 26 8 52 5 C72 10 68 38 50 50Z' transform='rotate(288 50 50)'/></g><circle cx='50' cy='50' r='10' fill='%23ffd23f'/></svg>"); }
+.s-shell      { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 90 L12 44 A42 42 0 0 1 88 44 Z' fill='%23f8e9dc' stroke='%23d6b39b' stroke-width='2.5' stroke-linejoin='round'/><path d='M50 90 L24 38 M50 90 L36 22 M50 90 L50 14 M50 90 L64 22 M50 90 L76 38' stroke='%23d6b39b' stroke-width='2.5' fill='none' stroke-linecap='round'/><path d='M38 90 h24 l-4 7 h-16Z' fill='%23e8cdb8' stroke='%23d6b39b' stroke-width='2'/></svg>"); }
+.s-starfish   { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,8 60.6,37.4 91.9,38.4 67.1,57.6 75.9,87.6 50,70 24.1,87.6 32.9,57.6 8.2,38.4 39.4,37.4' fill='%234a78bd' stroke='%234a78bd' stroke-width='7' stroke-linejoin='round'/><g fill='%239fc0ec'><circle cx='50' cy='26' r='2.6'/><circle cx='50' cy='38' r='2.6'/><circle cx='76' cy='42' r='2.6'/><circle cx='65' cy='45' r='2.6'/><circle cx='66' cy='74' r='2.6'/><circle cx='60' cy='63' r='2.6'/><circle cx='34' cy='74' r='2.6'/><circle cx='40' cy='63' r='2.6'/><circle cx='24' cy='42' r='2.6'/><circle cx='35' cy='45' r='2.6'/><circle cx='50' cy='52' r='3.4'/></g></svg>"); }
+.s-turtle     { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='%2379a968'><ellipse cx='20' cy='30' rx='8' ry='16' transform='rotate(-40 20 30)'/><ellipse cx='80' cy='30' rx='8' ry='16' transform='rotate(40 80 30)'/><ellipse cx='26' cy='76' rx='6' ry='11' transform='rotate(30 26 76)'/><ellipse cx='74' cy='76' rx='6' ry='11' transform='rotate(-30 74 76)'/><ellipse cx='50' cy='12' rx='9' ry='11'/></g><ellipse cx='50' cy='54' rx='27' ry='33' fill='%238a6a3a'/><ellipse cx='50' cy='54' rx='21' ry='27' fill='%23a98a4e'/><path d='M50 28 L64 42 L58 62 L42 62 L36 42 Z M50 28 V20 M64 42 L74 38 M58 62 L66 74 M42 62 L34 74 M36 42 L26 38' fill='none' stroke='%237a5a2c' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><circle cx='46' cy='10' r='1.6' fill='%231b2b1b'/><circle cx='54' cy='10' r='1.6' fill='%231b2b1b'/></svg>"); }
+.s-whale      { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M4 54 C6 34 40 28 62 36 C76 41 82 52 92 44 L96 28 C99 40 99 54 94 60 C88 66 80 62 74 62 C56 76 20 76 8 64 Z' fill='%235d86a8'/><path d='M10 62 C30 74 58 72 74 62 C58 66 28 66 10 62Z' fill='%23dbe9f2'/><path d='M40 66 C44 82 54 84 60 78 C54 74 50 70 48 66Z' fill='%234c7396'/><circle cx='18' cy='52' r='2.2' fill='%2314263a'/><path d='M22 40 C32 36 44 36 54 40' stroke='%238fb2cf' stroke-width='2' fill='none' stroke-linecap='round' opacity='.7'/></svg>"); }
+.s-moon       { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%23f7f2da'/><g fill='%23d8d2b8' opacity='.8'><circle cx='36' cy='38' r='8'/><circle cx='62' cy='56' r='11'/><circle cx='44' cy='68' r='5'/><circle cx='66' cy='30' r='4'/></g></svg>"); }
+.s-nazar      { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231d3f94'/><circle cx='50' cy='50' r='35' fill='white'/><circle cx='50' cy='50' r='25' fill='%234aa3df'/><circle cx='50' cy='50' r='13' fill='%230b1f4d'/><circle cx='45' cy='45' r='3' fill='white' opacity='.7'/></svg>"); }
+.s-coconut    { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%236b3f22'/><g stroke='%238d5a35' stroke-width='2' stroke-linecap='round'><path d='M10 40 l6 3 M14 64 l7 -2 M84 30 l-6 4 M88 58 l-7 -1 M30 12 l3 6 M66 90 l-2 -6'/></g><circle cx='50' cy='50' r='34' fill='%23fff8ec'/><circle cx='50' cy='50' r='24' fill='%23e8dcc4'/><ellipse cx='42' cy='42' rx='8' ry='5' fill='white' opacity='.7'/></svg>"); }
+.s-watermelon { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M6 28 A44 44 0 0 0 94 28 Z' fill='%232f9e44' stroke='%232f9e44' stroke-width='3' stroke-linejoin='round'/><path d='M12 28 A38 38 0 0 0 88 28 Z' fill='%23f6f3da'/><path d='M16 28 A34 34 0 0 0 84 28 Z' fill='%23ff4f64'/><g fill='%232b1a1a'><ellipse cx='34' cy='40' rx='2.2' ry='3.6' transform='rotate(-20 34 40)'/><ellipse cx='50' cy='48' rx='2.2' ry='3.6'/><ellipse cx='66' cy='40' rx='2.2' ry='3.6' transform='rotate(20 66 40)'/><ellipse cx='42' cy='56' rx='2.2' ry='3.6' transform='rotate(-10 42 56)'/><ellipse cx='58' cy='56' rx='2.2' ry='3.6' transform='rotate(10 58 56)'/></g></svg>"); }
+.s-mango      { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='m' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ffd25e'/><stop offset='.6' stop-color='%23f6a031'/><stop offset='1' stop-color='%23e5662a'/></linearGradient></defs><ellipse cx='38' cy='58' rx='24' ry='28' transform='rotate(-18 38 58)' fill='url(%23m)'/><ellipse cx='66' cy='50' rx='21' ry='25' transform='rotate(14 66 50)' fill='url(%23m)'/><ellipse cx='30' cy='48' rx='6' ry='10' transform='rotate(-18 30 48)' fill='white' opacity='.35'/><ellipse cx='60' cy='40' rx='5' ry='9' transform='rotate(14 60 40)' fill='white' opacity='.35'/><path d='M52 22 C58 12 70 12 76 18 C68 22 60 24 52 22Z' fill='%233e9a4d'/></svg>"); }
+.s-palm       { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M44 98 C42 74 50 52 62 34' stroke='%238a5a2b' stroke-width='6' fill='none' stroke-linecap='round'/><g fill='%232f9e57'><ellipse cx='62' cy='18' rx='6.5' ry='20' transform='rotate(-85 62 34)'/><ellipse cx='62' cy='18' rx='6.5' ry='20' transform='rotate(-48 62 34)'/><ellipse cx='62' cy='18' rx='6.5' ry='20' transform='rotate(-10 62 34)'/><ellipse cx='62' cy='18' rx='6.5' ry='20' transform='rotate(30 62 34)'/><ellipse cx='62' cy='18' rx='6.5' ry='20' transform='rotate(68 62 34)'/><ellipse cx='62' cy='18' rx='6.5' ry='20' transform='rotate(108 62 34)'/></g><circle cx='62' cy='36' r='4' fill='%236b3f22'/><circle cx='57' cy='40' r='3.4' fill='%236b3f22'/></svg>"); }
+.s-heart      { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 88 C8 60 4 28 28 19 C40 15 48 23 50 30 C52 23 60 15 72 19 C96 28 92 60 50 88Z' fill='%23eadfc8' stroke='%23cdbd9c' stroke-width='3' stroke-dasharray='5 4' stroke-linejoin='round'/><g fill='%23d9c9a6'><circle cx='30' cy='38' r='1.8'/><circle cx='58' cy='44' r='1.8'/><circle cx='44' cy='56' r='1.8'/><circle cx='70' cy='34' r='1.8'/><circle cx='52' cy='70' r='1.8'/></g></svg>"); }
+.s-sparkle    { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 2 L58 42 L98 50 L58 58 L50 98 L42 58 L2 50 L42 42Z' fill='white'/></svg>"); }
+.scene-sunset { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><linearGradient id='a' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%235aa7d6'/><stop offset='.6' stop-color='%23ffc58a'/><stop offset='1' stop-color='%23ff9a6b'/></linearGradient><linearGradient id='b' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23ffa77a'/><stop offset='.25' stop-color='%232aa5b5'/><stop offset='1' stop-color='%230a5e6c'/></linearGradient></defs><rect width='200' height='200' fill='url(%23a)'/><circle cx='100' cy='112' r='30' fill='%23fff0c4'/><rect y='112' width='200' height='88' fill='url(%23b)'/><path d='M86 122h28M90 130h20M94 138h12' stroke='%23ffe7a8' stroke-width='3' stroke-linecap='round' opacity='.75'/><g stroke='white' stroke-opacity='.45' stroke-width='2' fill='none' stroke-linecap='round'><path d='M20 150 q8 -5 16 0 t16 0 t16 0'/><path d='M110 164 q8 -5 16 0 t16 0 t16 0'/><path d='M40 180 q8 -5 16 0 t16 0 t16 0'/></g><path d='M100 74 L100 130 L136 130Z' fill='%23fff4dc'/><path d='M100 70 V132' stroke='%232a1710' stroke-width='2.5' stroke-linecap='round'/><path d='M72 132 Q104 148 138 132 L130 142 Q104 152 80 142Z' fill='%232a1710'/><path d='M82 148 L62 156' stroke='%232a1710' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='58' cy='158' rx='12' ry='3.5' fill='%232a1710'/></svg>"); }
+.scene-night  { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><linearGradient id='a' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23071a3a'/><stop offset='1' stop-color='%231d5a7a'/></linearGradient><linearGradient id='b' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%2312597a'/><stop offset='1' stop-color='%23062a3a'/></linearGradient></defs><rect width='200' height='200' fill='url(%23a)'/><g fill='white'><circle cx='24' cy='30' r='1.4'/><circle cx='56' cy='18' r='1.8'/><circle cx='84' cy='44' r='1.2'/><circle cx='110' cy='22' r='1.6'/><circle cx='40' cy='64' r='1.2'/><circle cx='178' cy='22' r='1.4'/><circle cx='130' cy='58' r='1.2'/><circle cx='18' cy='96' r='1.2'/><circle cx='96' cy='84' r='1.4'/></g><circle cx='150' cy='48' r='17' fill='%23fff7d6'/><rect y='120' width='200' height='80' fill='url(%23b)'/><path d='M142 126h16M146 134h8M144 142h12' stroke='%23fff7d6' stroke-width='2.5' stroke-linecap='round' opacity='.55'/><path d='M86 138 C86 120 82 110 72 102 C84 106 94 106 96 98 C98 106 108 106 120 102 C110 110 106 120 106 138 Z' fill='%23071d2b'/><g stroke='%239fd4e8' stroke-width='2' fill='none' stroke-linecap='round' opacity='.6'><path d='M70 142 q10 -5 20 0 t20 0 t20 0'/><path d='M30 168 q10 -5 20 0 t20 0'/><path d='M120 176 q10 -5 20 0 t20 0'/></g></svg>"); }
+.scene-island { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><linearGradient id='a' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%236fc8f0'/><stop offset='1' stop-color='%23d9f4ff'/></linearGradient><linearGradient id='b' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%233fd6cb'/><stop offset='1' stop-color='%23198fb0'/></linearGradient></defs><rect width='200' height='200' fill='url(%23a)'/><g fill='white' opacity='.9'><ellipse cx='50' cy='40' rx='26' ry='9'/><ellipse cx='68' cy='34' rx='16' ry='9'/><ellipse cx='150' cy='62' rx='24' ry='8'/><ellipse cx='166' cy='56' rx='14' ry='8'/></g><rect y='124' width='200' height='76' fill='url(%23b)'/><ellipse cx='100' cy='146' rx='70' ry='16' fill='%239cf0df' opacity='.7'/><ellipse cx='100' cy='134' rx='46' ry='12' fill='%23f2dca8'/><path d='M96 134 C94 116 100 100 110 88' stroke='%237b4f26' stroke-width='5' fill='none' stroke-linecap='round'/><g fill='%232f9e57'><ellipse cx='110' cy='72' rx='5.5' ry='17' transform='rotate(-85 110 88)'/><ellipse cx='110' cy='72' rx='5.5' ry='17' transform='rotate(-45 110 88)'/><ellipse cx='110' cy='72' rx='5.5' ry='17' transform='rotate(-5 110 88)'/><ellipse cx='110' cy='72' rx='5.5' ry='17' transform='rotate(35 110 88)'/><ellipse cx='110' cy='72' rx='5.5' ry='17' transform='rotate(75 110 88)'/><ellipse cx='110' cy='72' rx='5.5' ry='17' transform='rotate(115 110 88)'/></g><g stroke='white' stroke-opacity='.6' stroke-width='2' fill='none' stroke-linecap='round'><path d='M18 172 q8 -5 16 0 t16 0'/><path d='M130 180 q8 -5 16 0 t16 0'/></g></svg>"); }
+.tapa { height: 38px; background-color: #f1dfba; background-size: 76px 38px; background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='76' height='38' viewBox='0 0 76 38'><rect width='76' height='38' fill='%23f1dfba'/><path d='M0 38 L19 6 L38 38 Z M38 38 L57 6 L76 38 Z' fill='%237a3b1d'/><path d='M0 0 L19 32 L38 0 Z M38 0 L57 32 L76 0 Z' fill='%23c0875a' opacity='.55'/><circle cx='19' cy='25' r='3' fill='%23f1dfba'/><circle cx='57' cy='25' r='3' fill='%23f1dfba'/></svg>"); }
+
+
+
+/* ==========================================================
+   7. RESPONSIVIDADE
+   Estas regras só valem quando a tela é menor que o tamanho
+   indicado. Elas ajustam o layout para tablet e celular.
+   ========================================================== */
+
+/* TABLET (telas de até 900px) */
+@media (max-width: 900px) {
+  .duas-colunas {
+    grid-template-columns: 1fr;       /* as duas colunas viram uma embaixo da outra */
+  }
+  .tres-colunas {
+    grid-template-columns: 1fr 1fr;   /* três colunas viram duas */
+  }
+  .titulo-capa h1 {
+    font-size: 64px;
+    letter-spacing: 16px;
+    padding-left: 16px;
+  }
+}
+
+/* CELULAR (telas de até 600px) */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  .tres-colunas,
+  .duas-iguais {
+    grid-template-columns: 1fr;       /* tudo em uma coluna só */
+  }
+  .menu .container {
+    justify-content: center;
+  }
+  .faixa {
+    font-size: 30px;
+  }
+  .titulo-capa {
+    padding: 6px 16px 10px;
+  }
+  .titulo-capa h1 {
+    font-size: 42px;
+    letter-spacing: 10px;
+    padding-left: 10px;
+  }
+  .polaroid {
+    width: 100%;
+    max-width: 250px;
+  }
+  .recibo li {
+    flex-direction: column;           /* título da música e filme ficam um sobre o outro */
+    gap: 2px;
+  }
+}
